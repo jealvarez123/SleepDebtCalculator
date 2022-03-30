@@ -16,7 +16,7 @@ const getSleepHours = day => {
     return 9;
   }
 };
-// This adds up all the hours of the week using a concise body form
+// this function adds up all hours and multiples them by 7(for each day)
 const getActualSleepHours = () =>
 getSleepHours('monday') +
 getSleepHours('tuesday') +
@@ -25,3 +25,19 @@ getSleepHours('thursday') +
 getSleepHours('friday') +
 getSleepHours('saturday') +
 getSleepHours('sunday');
+
+const getIdealSleepHours = hours => {
+  return hours * 7;
+};
+// this function takes both functions and compares them
+const calculateSleepDebt = () => {
+  const actualSleepHours = getActualSleepHours();
+  const idealSleepHours = getIdealSleepHours(9);
+  if (actualSleepHours === idealSleepHours) {
+    return 'You got the perfect amount of sleep!';
+} else if (actualSleepHours > idealSleepHours) {
+    return 'You got too much sleep!';
+} else {
+    return 'You need ' + (idealSleepHours - actualSleepHours) + ' more hours of sleep!'
+  }
+};
